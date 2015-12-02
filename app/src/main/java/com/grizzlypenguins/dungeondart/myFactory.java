@@ -100,9 +100,9 @@ public class myFactory {
         for(int i=10;i<90;i++)
         {
             for(int y=10;y<90;y++)
-            if(temp.tiles[i][y].define==0)temp.tiles[i][y].define=1;
+            if(temp.tiles[i][y].getDefine()==0)temp.tiles[i][y].setDefine(1);
         }
-        temp.tiles[11][11].define = 7;
+        temp.tiles[11][11].setDefine(7);
         return temp;
     }
 
@@ -191,21 +191,21 @@ public class myFactory {
         while(true) {
             x = Rand.random.nextInt((tileNumber- 20) + 1) + 20;
             y = Rand.random.nextInt((tileNumber - 20) + 1) + 20;
-            if (temp[x][y].define < 3) {
+            if (temp[x][y].getDefine() < 3) {
                 temp[x][y] = newStartTile();
                 break;
             }
         }  while(true) {
         x = Rand.random.nextInt((tileNumber- 20) + 1) + 20;
         y = Rand.random.nextInt((tileNumber - 20) + 1) + 20;
-        if (temp[x][y].define < 3) {
+        if (temp[x][y].getDefine() < 3) {
             temp[x][y] = newFinishTile();
             break;
         }
     }  while(true) {
         x = Rand.random.nextInt((tileNumber- 20) + 1) + 20;
         y = Rand.random.nextInt((tileNumber - 20) + 1) + 20;
-        if (temp[x][y].define < 3) {
+        if (temp[x][y].getDefine() < 3) {
             temp[x][y] = newMonsterDenTile();
             break;
         }
@@ -318,7 +318,7 @@ public class myFactory {
         {
             for(int y=0;y<tiles[0].length;y++)
             {
-                temp[i][y]= tiles[i][y].define;
+                temp[i][y]= tiles[i][y].getDefine();
             }
         }
         return temp;

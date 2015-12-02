@@ -67,7 +67,7 @@ public class CameraControl implements Serializable {
 
     boolean movableTile(Tile t)
     {
-        if(t.define>0)
+        if(t.getDefine()>0)
             return true;
         else
             return false;

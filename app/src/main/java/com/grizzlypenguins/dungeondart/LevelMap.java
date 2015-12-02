@@ -12,8 +12,11 @@ import java.util.Collections;
  */
 public class LevelMap implements Serializable {
 
+    // table fields
+    private int _id;
+    private String mapName;
+    private int _userid; // foreign key
 
-    public String mapName;
     public Tile tiles [][];  //tile [height][width]
 
    //public int tileNumber;
@@ -25,6 +28,49 @@ public class LevelMap implements Serializable {
     MyPoint start = new MyPoint(1,1);
     MyPoint end = new MyPoint(1,1);
     MyPoint monsterStart = new MyPoint(1,1);
+
+    /*
+        added getters and setters
+     */
+
+    public int getId() {
+        return _id;
+    }
+
+    public void setId(int id) {
+        _id = id;
+    }
+
+    public String getMapName() {
+        return mapName;
+    }
+
+    public void setMapName(String mapname) {
+        mapName = mapname;
+    }
+
+    public int getUserId() {
+        return _userid;
+    }
+
+    public void setUserId(int userid) {
+        _userid = userid;
+    }
+
+    /*
+        end of added getters and setters
+     */
+
+    /*
+        added constructor
+     */
+    public LevelMap() {
+
+    }
+
+    /*
+        end of added constructor
+     */
 
     public  LevelMap (Tile Tiles [][],String mapName)
     {
@@ -63,17 +109,17 @@ public class LevelMap implements Serializable {
                     Log.v("LevelMap "," null tiles");
                     break;
                 }
-                if(tiles[i][y].define == 2)
+                if(tiles[i][y].getDefine() == 2)
                 {
                     // Implement the drawing of start and finish tiles
                     starts.add(new MyPoint(i, y));
 
                 }
-                if(tiles[i][y].define == 3)
+                if(tiles[i][y].getDefine() == 3)
                 {
                     finishs.add(new MyPoint(i, y));
                 }
-                if(tiles[i][y].define == 7)
+                if(tiles[i][y].getDefine() == 7)
                 {
                     monsterStarts.add(new MyPoint(i,y));
                 }
@@ -104,7 +150,7 @@ public class LevelMap implements Serializable {
                 {
                     good1 = true;
                     start = starts.get(i);
-                    tiles[start.x][start.y].define=4;
+                    tiles[start.x][start.y].setDefine(4);
                     //System.out.println("Tile x: "+ start.x + " Tile y:"+start.y +" keyword: banana");
                     break;
                 }
@@ -116,7 +162,7 @@ public class LevelMap implements Serializable {
             {
                 good2 = true;
                 end = finishs.get(i);
-                tiles[finishs.get(i).x][finishs.get(i).y].define = 5;
+                tiles[finishs.get(i).x][finishs.get(i).y].setDefine(5);
                 break;
             }
 
@@ -128,7 +174,7 @@ public class LevelMap implements Serializable {
             {
                 good3 = true;
                 monsterStart = monsterStarts.get(i);
-                tiles[monsterStarts.get(i).x][monsterStarts.get(i).y].define = 7;
+                tiles[monsterStarts.get(i).x][monsterStarts.get(i).y].setDefine(7);
                 break;
             }
 
@@ -145,7 +191,7 @@ public class LevelMap implements Serializable {
     MyPoint choose_End()
     {
         Collections.shuffle(finishs);
-       // for(int i=0;i<finishs.size();i++)tiles[finishs.get(i).x][finishs.get(i).y].define = 6;
+       // for(int i=0;i<finishs.size();i++)tiles[finishs.get(i).x][finishs.get(i).y].getDefine() = 6;
         return finishs.get(0);
     }
 

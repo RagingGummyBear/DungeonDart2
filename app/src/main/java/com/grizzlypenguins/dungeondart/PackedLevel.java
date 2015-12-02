@@ -82,7 +82,7 @@ public class PackedLevel implements Serializable {
         }
        cameraControl.calculateShadow((int) Math.floor(torchLight.intensity));
 
-      if(temp!=null) if(temp.define == 5){
+      if(temp!=null) if(temp.getDefine() == 5){
            gameFinished = true;
        }
 
